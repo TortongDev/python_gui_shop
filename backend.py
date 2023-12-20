@@ -86,6 +86,8 @@ class RestaurantSystem:
 
         edit_button = tk.Button(tab2, text="แก้ไขข้อมูล", command=gui.edit_order)
         edit_button.pack()
+        add_button = tk.Button(tab2, text="เพิ่มรายการอาหาร", command=gui.save_order)
+        add_button.pack()
 
         gui.customer_name_menu2 = tk.StringVar()
         gui.table_number_menu2  = tk.StringVar()
@@ -93,29 +95,29 @@ class RestaurantSystem:
         gui.price_menu2         = tk.StringVar()
         gui.queantity           = tk.StringVar()
 
-
-        label_customer = tk.Label(tab2, text="Customer Name:")
-        label_customer.pack()
+       
+        gui.label_customer = tk.Label(tab2, text="Customer Name:")
+        gui.label_customer.pack()
         gui.customer_name = tk.Entry(tab2,textvariable=gui.customer_name_menu2)
         gui.customer_name.pack()
-        label_table = tk.Label(tab2, text="โต๊ะที:")
-        label_table.pack()
+        gui.label_table = tk.Label(tab2, text="โต๊ะที:")
+        gui.label_table.pack()
         gui.table_numner = tk.Entry(tab2,textvariable=gui.table_number_menu2)
         gui.table_numner.pack()
-        label_food = tk.Label(tab2, text="อาหารที่สั่ง:")
-        label_food.pack()
+        gui.label_food = tk.Label(tab2, text="อาหารที่สั่ง:")
+        gui.label_food.pack()
         gui.food_name = tk.Entry(tab2,state='disabled' , textvariable=gui.food_name_menu2)
         gui.food_name.pack()
-        label_price = tk.Label(tab2, text="ราคา: ")
-        label_price.pack()
+        gui.label_price = tk.Label(tab2, text="ราคา: ")
+        gui.label_price.pack()
         gui.input_price = tk.Entry(tab2 , textvariable=gui.price_menu2)
         gui.input_price.pack()
-        label_queantity= tk.Label(tab2, text="จำนวน:")
-        label_queantity.pack()
+        gui.label_queantity= tk.Label(tab2, text="จำนวน:")
+        gui.label_queantity.pack()
         gui.input_queantity = tk.Entry(tab2 , textvariable=gui.queantity)
         gui.input_queantity.pack()
-        update_button = tk.Button(tab2, text="บันทึกการแก้ไข", command=gui.edit_order)
-        update_button.pack()
+        gui.update_button = tk.Button(tab2, text="บันทึกการแก้ไข", command=gui.edit_order)
+        gui.update_button.pack()
 
 
         # label_price = tk.Label(tab2, text="วัน//เวลา")
@@ -159,6 +161,20 @@ class RestaurantSystem:
             gui.food_name_menu2.set(food_name)
             gui.price_menu2.set(price)
             gui.queantity.set(queantity)
+    def save_order(gui):
+                
+        gui.label_customer.pack_forget()
+        gui.label_table.pack_forget()
+        gui.label_food.pack_forget()
+        gui.label_price.pack_forget()
+        gui.label_queantity.pack_forget()
+        gui.update_button.pack_forget()
+        gui.customer_name.pack_forget()
+        gui.table_numner.pack_forget()
+        gui.food_name.pack_forget()
+        gui.input_price.pack_forget()
+        gui.input_queantity.pack_forget()
+
 
     def cancel_reservation(gui):
         selected_item = tree.selection()
