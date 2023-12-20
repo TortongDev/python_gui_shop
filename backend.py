@@ -133,11 +133,20 @@ class RestaurantSystem:
         label_category.pack()
         cal = DateEntry(tab3, width=12, background="darkblue", foreground="white", borderwidth=2)
         cal.pack(padx=10, pady=10)
-
         bill_system = BillSystem(tab3)
         bill_system.create_widgets()
 
         tab_control.pack(expand=1, fill="both")
+
+        gui.summary_button = tk.Button(tab3, text="สรุปยอดขายทั้งหมด", command=gui.getReportList)
+        gui.summary_button.pack(side=tk.TOP, padx=10, pady=10)
+
+    def getReportList(gui):
+        tab_control = ttk.Notebook(gui.root)
+        tab_control.pack(expand=1, fill="both")
+        tab4 = ttk.Frame(tab_control)
+        tab_control.add(tab4, text='เมนูอาหาร')
+
     def edit_order(gui):
         selected_item = menu_tree.selection()
        
@@ -249,9 +258,7 @@ class BillSystem:
         # gui.date_button.pack(side=tk.TOP, padx=10, pady=10)
 
         # ปุ่มสรุปยอดขาย
-        gui.summary_button = tk.Button(gui.root, text="สรุปยอดขายทั้งหมด", command=gui.summarize_sales)
-        gui.summary_button.pack(side=tk.TOP, padx=10, pady=10)
-
+     
         # ส่วนของตารางรายการขาย
         gui.tree = ttk.Treeview(gui.root, columns=("โต๊ะ","รายการ","จำนวน", "ยอดขายสุทธิ"))
         gui.tree.heading("#0", text="วันที่")
